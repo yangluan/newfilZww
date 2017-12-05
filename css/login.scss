@@ -1,0 +1,51 @@
+@function rem($px) {
+  @return $px / 46.875 + rem;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+.footLogin{
+  width: 100%;
+  height: rem(1334);
+  background-image: url('../images/login_bg.png');
+  -webkit-background-size:100% rem(1334);
+  background-size:100% rem(1334);
+  overflow: hidden;
+  position: relative;
+  .headerLoginLogos{
+    width: 100%;
+    position: absolute;
+    height:rem(400);
+    border: 1px solid transparent;
+    img{
+      width: 90%;
+      height: rem(350);
+      margin-left: rem(50);
+      margin-top: rem(100);
+    }
+  }
+  .footerLoginWxs{
+    width: 100%;
+    height:rem(650);
+    position: absolute;
+    border: 1px solid transparent;
+    bottom: 0;
+    img{
+      width:80%;
+      height:rem(200);
+      margin-left: rem(80);
+      margin-top: rem(150);
+    }
+    .checkText{
+      width: 90%;
+      height: rem(50);
+      margin-top: rem(200);
+      border: 1px solid transparent;
+      margin-left: rem(50);
+      text-align: center;
+      font-size: rem(20);
+      color: white;
+    }
+  }
+}

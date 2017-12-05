@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="../js/yang_set_rem.js"></script>
+    <link rel="stylesheet" href="../css/receivingAddress.css">
+</head>
+<body>
+<!-- 添加地址   -->
+<a href="addRess.html">
+    <span class="goAddress"></span>
+</a>
+<header>
+    <div class="imgBox"><a href="user.html" class="firstA"></a>收货地址 </div>
+    <!--  <a href="" class="secondA"></a>   -->
+</header>
+
+<section>
+    <a href="addRessTwo.html">
+    <div class="pressBox" id="hide">
+        <p id="pText"></p>
+        <p id="pText2"><span id="spanPress"></span><span id="spanPhoto"></span></p>
+        <div class="jianT">></div>
+    </div>
+    </a>
+</section>
+
+
+
+
+<script>
+    var pText = document.getElementById('pText');
+    var spanPress = document.getElementById('spanPress');
+    var spanPhoto = document.getElementById('spanPhoto');
+    var hide = document.getElementById('hide');
+    if(localStorage.userName == ''&&localStorage.userPrice == ''&&localStorage.userPhoto ==''){
+        hide.style.display = 'none'
+    }else{
+        pText.innerHTML = localStorage.userName;
+        spanPress.innerHTML = localStorage.userPrice;
+        spanPhoto.innerHTML = localStorage.userPhoto;
+        hide.style.display = 'block'
+    }
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/user.css">
+    <!--<link rel="stylesheet" href="../css/mui.css">-->
+    <!--<script src="../js/mui.js"></script>-->
+    <script src="../js/yang_set_rem.js"></script>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<header>
+    <div class="imgBox"></div>
+    <div class="logBox"></div>
+</header>
+
+<section>
+
+    <div id="chzBox">
+        <div class="titleCzhi">娃娃币充值<span class="closeThisShow" onclick="czShow()"></span></div>
+        <div class="chuangLian"></div>
+        <div class="footDiv"></div>
+    </div>
+
+    <div class="usertitle">
+        <div class="titlePhoto">photo</div>
+        <div class="nameDateId">
+            <span>崔红雷</span>
+            <span>ID：10005</span>
+        </div>
+        <div class="rechange">
+            <div class="myDollB">我的娃娃币 <br>7959</div>
+            <div><img src="../images/recharge_btn.png" alt="" id="cz"></div>
+        </div>
+    </div>
+    <div class="userInfo">
+    <ul>
+        <li><a href="myDoll.html" style="color: white;text-decoration: none">我的娃娃 <span></span></a></li>
+        <li><a href="grabRecord.html" style="color: white;text-decoration: none">抓取记录 <span></span></a></li>
+        <li><a href="myOrder.html" style="color: white;text-decoration: none">我的订单 <span></span></a></li>
+        <li class="padTop"><a href="receivingAddress.html" style="color: white;text-decoration: none">收货地址 <span></span></a></li>
+    </ul>
+    </div>
+
+    <div class="userInfo">
+        <ul>
+            <li>音乐
+                <div class="switch">
+                    <input id="myInput" type="checkbox" value="0" name="myinput"/>
+                </div>
+            </li>
+
+            <li class="padTop">音效
+                <div class="switch">
+                    <input id="myInput" type="checkbox" value="0" name="myinput"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="userInfo">
+        <ul>
+            <li class="padTop" onclick="erWma()">客服</li>
+        </ul>
+    </div>
+
+    <div class="outLogin" id="tanc">
+        <span onclick="tabc()">退出登录</span>
+    </div>
+</section>
+
+
+
+<!--   客服弹层 -->
+<div class="tanCeng">
+    <div class="head"><span id="clos">X</span></div>
+    <div class="log">
+        <div class="logoPic"></div>
+        快来天天乐抓娃娃
+    </div>
+    <span class="qunSize">QQ群号：683602805</span>
+    <div class="rwm"></div>
+    <span class="qunSize">或扫码加入</span>
+</div>
+<!--   退出登录弹层 -->
+<div class="outLoging" style="display: none">
+    <div class="head"><span id="gb" onclick="qx()">X</span></div>
+    <div class="outText">真的要退出登陆吗？</div>
+    <div class="buts"><img src="../images/btn_cancel.png" alt="" onclick="qx()"><img src="../images/btn_ok.png" alt=""></div>
+</div>
+
+
+<footer>
+    <div class="flex">
+        <a href="index.html" class="home"></a>
+        <a href="user.html" class="user"></a>
+    </div>
+</footer>
+
+<script>
+    var tanceng=document.getElementsByClassName('tanCeng')[0];
+    var clos = document.getElementById('clos');
+    function erWma() {
+        //div显示隐藏
+        tanceng.style.display='block';
+        console.log('事件触发');
+    }
+    clos.onclick=function () {
+        tanceng.style.display='none';
+        console.log('触发事件')
+    };
+    function tabc() {
+        outlin.style.display='block'
+    };
+    function qx() {
+        outlin.style.display='none'
+    }
+    var gb=document.getElementById('#gb');
+    var tanc=document.getElementById('#tanc');
+    var outlin =document.getElementsByClassName('outLoging')[0];
+
+    //存入a变量控制login动画页显示隐藏
+            localStorage.a=1;
+    //充值
+    function czShow() {
+        var chzBox = document.getElementById('chzBox');
+        chzBox.style.display = 'none';
+    }
+    var cz = document.getElementById('cz');
+    cz.onclick = function () {
+        var chzBox = document.getElementById('chzBox');
+        chzBox.style.display = 'block';
+    }
+    //getDate
+//    var ruCan = 'wawaji-bejing-00010001';
+//    $.ajax({
+//        url: 'http://zhuawawa-debug.hljoy.com/api/1.0.3/play/GetResult/0/1/2/?token=10004:1512099830:0af71dc955a2b146fbd93ab6d84900b1',
+//        datatype: 'json',
+//        type: 'get',
+//        data:ruCan,
+//        success: function (data) {
+//            console.log(data);
+//        }
+//    })
+
+</script>
+</body>
+</html>

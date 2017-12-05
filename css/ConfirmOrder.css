@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0; }
+
+body {
+    display: flex;
+    background-color: #AFD3F7;
+    overflow: hidden; }
+
+header {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 3.41333rem;
+    background-color: deepskyblue; }
+header .imgBox {
+    text-align: center;
+    color: white;
+    font-size: 0.96rem;
+    line-height: 2.77333rem;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/title_bg.png");
+    background-size: 100% 3.41333rem; }
+header .imgBox a {
+    padding-left: 0.21333rem;
+    width: 0.64rem;
+    height: 1.06667rem;
+    display: inline-block;
+    position: absolute;
+    top: 0.85333rem;
+    left: 0.42667rem;
+    background-color: transparent;
+    background-image: url("../images/back.png");
+    -webkit-background-size: 0.85333rem 1.06667rem; }
+section {
+    width: 100%;
+    padding-top: 4rem;
+}
+section .waWaOnlyShow{
+    width: 100%;
+    height: 3.5rem;
+    background-color: #00B2D8;
+    position: relative;
+}
+section .waWaOnlyShow .onlyPhoto{
+    width: 3rem;
+    height: 3rem;
+    border:1px solid transparent;
+    position: absolute;
+    top: .2rem;
+    left: 1rem;
+}
+section .waWaOnlyShow .onlyName{
+    position: absolute;
+    width: 5rem;
+    text-align: center;
+    height:3rem;
+    line-height: 3rem;
+    color: white;
+    font-size: .5rem;
+    left: 5rem;
+    top: .2rem;
+    border: 1px solid transparent;
+}
+section .waWaOnlyShow .onlyNumb{
+    width: 2rem;
+    border-radius: 50%;
+    height: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 1.2rem;
+    text-align: center;
+    font-size: .8rem;
+    line-height: 1rem;
+    background-color: gray;
+}
+section .inpGroups{
+    width: 100%;
+    margin-top: 1rem;
+    height:5rem;
+    background-color: transparent;
+}
+section .inpGroups .iptFirstGroupsTitle{
+    width: 100%;
+    height:1.4rem;
+    border: 1px solid transparent;
+}
+section .inpGroups .iptFirstGroupsTitle span{
+    color: black;
+    font-size: .5rem;
+    margin-top: -.2rem;
+}
+section .inpGroups .iptFirstGroupsTitle a{
+    font-size: .5rem;
+    margin-top: .25rem;
+    float: right;
+    color: deepskyblue;
+    text-decoration: none;
+}
+section .inpGroups .iptirstGroupsInputs{
+    color: white;
+    font-size: .7rem;
+}
+
+
+section .bigBox{
+    width: 100%;
+    height: 4rem;
+    background-color: gray;
+    top: 10rem;
+    position: absolute;
+    display: block;
+}
+section .bigBox .pressBox{
+    position: relative;
+    width: 100%;
+    height:4rem;
+    background-color: gray;
+}
+section .bigBox .pressBox #pText{
+    font-size: .8rem;
+    display: inline-block;
+    padding-left: .5rem;
+    width: 100%;
+    height:2rem;
+    border: 1px solid transparent;
+    line-height: 2rem;
+    color: white;
+}
+section .bigBox .pressBox #pText2{
+    display: inline-block;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: .6rem;
+    color: white;
+    padding-left: .5rem;
+}
+section .bigBox .pressBox #pText2 #spanPhoto{
+    margin-left: 1rem;
+}
+section .bigBox .pressBox .jianT{
+    position: absolute;
+    top: 1.3rem;
+    right: 1rem;
+    font-size: 1rem;
+    color: orange;
+}
+a{
+    text-decoration: none;
+}
+
+
+
+section .yunFei{
+    width: 100%;
+    height: 3rem;
+    margin-top: .5rem;
+    background-color: transparent;
+}
+section .yunFei .yunFeiTitle{
+    width: 100%;
+    height:1.4rem;
+    border-bottom: 1px solid transparent;
+    font-size: .7rem;
+    line-height: 1.4rem;
+}
+section .yunFei .yunFeiText{
+    width: 100%;
+    height:1.5rem;
+    background-color: transparent;
+    color:white;
+    font-size: .7rem;
+    line-height: 1.5rem;
+}
+section .yunFei .yunFeiText input{
+    width: 100%;
+    height: 1.5rem;
+}
+section .submit{
+    width: 100%;
+    height: 2rem;
+    background-color: blue;
+    margin-top: 1rem;
+    text-align: center;
+    color: white;
+    line-height: 2rem;
+    font-size: .8rem;
+    border-radius: 10%;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>新增收货地址</title>
+    <script src="../js/yang_set_rem.js"></script>
+    <link rel="stylesheet" href="../css/addRess.css">
+</head>
+<body style="background-color: #AFD3F7;">
+<header>
+    <div class="remove" style="width: 2rem;height: 1rem;position: absolute;right: .5rem;top: .7rem;color: red" onclick="remove()">删除</div>
+    <div class="imgBox"><a href="receivingAddress.html" class="firstA"></a>编辑收货信息 </div>
+    <!--  <a href="" class="secondA"></a>   -->
+</header>
+<section>
+    <div class="firstBox">
+        <div class="firstTitle">收件人姓名</div>
+        <div class="firstIpt"><input type="text" placeholder="填写姓名（名字不能超过7位汉字）" id="ipt1" onblur="onf()"></div>
+    </div>
+    <div class="firstBox">
+        <div class="firstTitle">联系方式</div>
+        <div class="firstIpt"><input type="text" placeholder="填写手机号或固定电话" id="ipt2" value="" onblur="onf()"></div>
+    </div>
+    <div class="firstBox">
+        <div class="firstTitle">收件地址</div>
+        <div class="firstIpt"><input type="text" placeholder="填写具体收件地址" id="ipt3" value="" onblur="onf()"></div>
+    </div>
+    <footer>
+        <div class="btnAdd" id="addBtn" onclick="sub()">确定修改</div>
+    </footer>
+</section>
+<script>
+    var ipt1 = document.getElementById('ipt1');
+    var ipt2 = document.getElementById('ipt2');
+    var ipt3 = document.getElementById('ipt3');
+    var addBtn = document.getElementById('addBtn');
+    ipt1.value = localStorage.userName;
+    ipt2.value = localStorage.userPhoto;
+    ipt3.value = localStorage.userPrice;
+
+
+    function remove() {
+        ipt1.value = '';
+        ipt2.value = '';
+        ipt3.value = '';
+        localStorage.userName = '';
+        localStorage.userPhoto = '';
+        localStorage.userPrice = '';
+    }
+    
+    function onf() {
+        if(ipt1.value!=''&&ipt2.value!=''&&ipt3.value!=''){
+            addBtn.style.backgroundColor = 'green'
+        }
+    }
+    function sub() {
+        if(ipt1.value!=''&&ipt2.value!=''&&ipt3.value!=''){
+            localStorage.clear();
+            localStorage.userName = ipt1.value;
+            localStorage.userPhoto = ipt2.value;
+            localStorage.userPrice = ipt3.value;
+            alert('修改成功!');
+        }
+        ipt1.value='';
+        ipt2.value='';
+        ipt3.value='';
+        addBtn.style.backgroundColor = 'gray'
+    }
+</script>
+</body>
+</html>

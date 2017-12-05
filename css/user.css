@@ -1,0 +1,329 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  display: flex;
+  background-color: #AFD3F7;
+  overflow: hidden; }
+
+header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 3.41333rem;
+  background-color: deepskyblue; }
+  header .imgBox {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/title_bg.png");
+    background-size: 100% 3.41333rem; }
+  header .logBox {
+    z-index: 2;
+    margin: -3.41333rem auto;
+    width: 4.26667rem;
+    height: 2.51733rem;
+    background-image: url("../images/title_logo.png");
+    -webkit-background-size: 4.26667rem 2.51733rem;
+    background-size: 4.26667rem 2.51733rem; }
+
+section {
+  padding-top: 3.84rem;
+  flex-grow: 1; }
+  section .usertitle {
+    width: 100%;
+    height: 4.26667rem;
+    position: relative;
+    background-color: #1d74ff;
+    margin-bottom: 0.42667rem; }
+    section .usertitle .titlePhoto {
+      width: 3.2rem;
+      height: 3.2rem;
+      margin-left: 0.42667rem;
+      position: absolute;
+      top: 0.53333rem;
+      border: 1px solid yellow; }
+    section .usertitle .nameDateId {
+      width: 3.2rem;
+      height: 3.2rem;
+      border: 1px solid transparent;
+      position: absolute;
+      left: 4.26667rem;
+      top: 0.512rem;
+      text-align: center;
+      font-size: 0.42667rem;
+      line-height: 1.49333rem;
+      color: white; }
+    section .usertitle .rechange {
+      width: 5.33333rem;
+      height: 3.2rem;
+      top: 0.93867rem;
+      right: 0.42667rem;
+      border: 1px solid transparent;
+      position: absolute; }
+      section .usertitle .rechange .myDollB {
+        text-align: center;
+        color: white;
+        font-size: 0.42667rem; }
+      section .usertitle .rechange #cz {
+        width: 2.13333rem;
+        height: 0.85333rem;
+        margin-left: 1.70667rem; }
+  section .userInfo {
+    width: 100%;
+    background-color: #1d74ff; }
+    section .userInfo .padTop {
+      margin-bottom: 0.42667rem; }
+    section .userInfo ul > li {
+      color: white;
+      list-style: none;
+      padding: 0.42667rem;
+      border-bottom: 1px solid #AFD3F7;
+      font-size: 0.42667rem;
+      line-height: 1.06667rem;
+      height: 1.06667rem;
+      width: 100%; }
+      section .userInfo ul > li span {
+        width: 0.64rem;
+        height: 1.06667rem;
+        background-image: url("../images/more.png");
+        line-height: 1.06667rem;
+        display: inline-block;
+        position: absolute;
+        right: 0.42667rem;
+        -webkit-background-size: 0.64rem 1.06667rem; }
+  section .outLogin {
+    width: 100%;
+    height: 1.92rem;
+    background-color: #1d74ff;
+    line-height: 1.92rem;
+    text-align: center;
+    font-size: 0.42667rem;
+    color: #ff0d26; }
+  section .switch {
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-right: 1.06667rem;
+    font-size: 12px;
+    width: 0.85333rem;
+    height: 0.32rem;
+    line-height: 13px; }
+  section .switch input {
+    width: 0.85333rem;
+    height: 13px;
+    position: absolute;
+    z-index: 2;
+    border: 0;
+    background: 0 0;
+    -webkit-appearance: none;
+    outline: 0; }
+  section .switch input:before {
+    content: '';
+    width: 1.06667rem;
+    height: 12px;
+    border: 1px solid #dfdfdf;
+    background-color: #fdfdfd;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-box-shadow: #dfdfdf 0 0 0 0 inset;
+    box-shadow: #dfdfdf 0 0 0 0 inset;
+    -webkit-transition: border .4s, background-color .4s;
+    transition: border 1s, background-color 1s;
+    -webkit-background-clip: content-box;
+    background-clip: content-box; }
+  section .switch input:after {
+    content: '';
+    width: 10px;
+    height: 11px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    border-radius: 100%;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    -webkit-transition: left .2s;
+    transition: left .2s; }
+  section .switch input:checked:before {
+    border-color: green;
+    -webkit-box-shadow: green 0 0 0 16px inset;
+    box-shadow: green 0 0 0 16px inset;
+    background-color: green;
+    transition: background-color .4s;
+    -webkit-transition: background-color .4s; }
+  section .switch input:checked:after {
+    left: 11px; }
+
+  #chzBox{
+    display: none;
+    z-index: 5;
+    position: absolute;
+    width:14.5rem;
+    height:17rem;
+    background-color: transparent;
+    /*border: 1px solid black;*/
+    left: .8rem;
+    top: 5rem;
+  }
+.titleCzhi{
+  width: 100%;
+  height: 2rem;
+  text-align: center;
+  font-size: .7rem;
+  color: white;
+  text-shadow: 5px 2px 5px deepskyblue;
+  border-bottom: 1px solid black;
+  line-height: 3rem;
+}
+.chuangLian{
+  width: 100%;
+  height: 2rem;
+  background-color: transparent;
+  background-image: url('../images/title_bg.png');
+  -webkit-background-size:100% 2rem;
+}
+.footDiv{
+  width: 100%;
+  height: 13rem;
+  background-color: yellowgreen;
+}
+
+
+.closeThisShow{
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+  position: absolute;
+  right: -.2rem;
+  background-image: url('../images/btn_close.png');
+  -webkit-background-size:1rem 1rem;
+  top: 1.8rem;
+}
+
+
+
+.outLoging {
+  width: 12.8rem;
+  height: 8.53333rem;
+  border: 1px solid peru;
+  position: absolute;
+  top: 8.53333rem;
+  left: 1.70667rem;
+  background-color: white; }
+  .outLoging .head {
+    width: 100%;
+    height: 2.13333rem;
+    background-image: url("../images/title_bg.png");
+    -webkit-background-size: 100% 2.13333rem; }
+    .outLoging .head #gb {
+      width: 1.06667rem;
+      float: right;
+      height: 1.06667rem;
+      background-color: red;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 1.06667rem; }
+  .outLoging .outText {
+    width: 100%;
+    height: 2.13333rem;
+    text-align: center;
+    border: 1px solid transparent;
+    font-weight: bold;
+    font-size: 0.85333rem;
+    line-height: 2.13333rem; }
+  .outLoging .buts {
+    width: 100%;
+    height: 3.2rem;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: space-around; }
+    .outLoging .buts img {
+      margin-top: 1.06667rem;
+      width: 3.2rem;
+      height: 1.70667rem; }
+
+.tanCeng {
+  display: none;
+  text-align: center;
+  z-index: 3;
+  left: 1.70667rem;
+  top: 2.13333rem;
+  width: 12.8rem;
+  height: 19.2rem;
+  background-color: white;
+  position: absolute; }
+  .tanCeng .head {
+    width: 12.8rem;
+    height: 1.92rem;
+    background-color: transparent; }
+    .tanCeng .head span {
+      display: inline-block;
+      width: 1.06667rem;
+      height: 1.06667rem;
+      border-radius: 50%;
+      background-color: red;
+      color: whitesmoke;
+      font-size: 0.64rem;
+      text-align: center;
+      line-height: 1.06667rem;
+      float: right; }
+  .tanCeng .log {
+    width: 10.66667rem;
+    height: 7.46667rem;
+    border: 1px solid transparent;
+    margin-left: 1.06667rem;
+    text-align: center;
+    border-bottom: 1px solid deepskyblue;
+    font-size: 0.32rem; }
+    .tanCeng .log .logoPic {
+      width: 6.4rem;
+      height: 4.26667rem;
+      border: 1px solid transparent;
+      margin-left: 2.13333rem;
+      margin-top: 1.06667rem;
+      background-image: url("../images/service_logo.png");
+      -webkit-background-size: 6.4rem 4.48rem;
+      padding-bottom: 0.42667rem; }
+  .tanCeng .rwm {
+    width: 6.4rem;
+    height: 6.4rem;
+    border: 1px solid transparent;
+    margin-left: 3.2rem;
+    background-image: url("../images/qq_group.jpg");
+    -webkit-background-size: 6.4rem 6.4rem; }
+  .tanCeng .qunSize {
+    font-size: 0.21333rem; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2.13333rem;
+  background-color: white;
+  border-top: 1px solid beige;
+  text-align: center; }
+  footer .flex {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around; }
+  footer a {
+    display: inline-block;
+    width: 0.85333rem;
+    height: 0.85333rem;
+    margin-top: 0.64rem; }
+  footer .home {
+    background-image: url("../images/ico_home_active.png");
+    -webkit-background-size: 0.85333rem; }
+  footer .user {
+    background-image: url("../images/ico_me_active.png");
+    -webkit-background-size: 0.85333rem; }
+
+/*# sourceMappingURL=user.css.map */

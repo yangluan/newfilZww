@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  display: flex;
+  background-color: #AFD3F7;
+  overflow: hidden; }
+
+header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 3.41333rem;
+  background-color: deepskyblue; }
+  header .imgBox {
+    text-align: center;
+    color: white;
+    font-size: 0.96rem;
+    line-height: 2.77333rem;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/title_bg.png");
+    background-size: 100% 3.41333rem; }
+    header .imgBox .firstA {
+      padding-left: 0.21333rem;
+      width: 0.64rem;
+      height: 1.06667rem;
+      display: inline-block;
+      position: absolute;
+      top: 0.85333rem;
+      left: 0.42667rem;
+      background-color: transparent;
+      background-image: url("../images/back.png");
+      -webkit-background-size: 0.85333rem 1.06667rem; }
+    header .imgBox .secondA {
+      display: inline-block;
+      width: 2.13333rem;
+      height: 1.06667rem;
+      position: absolute;
+      background-image: url("../images/address_add_btn.png");
+      -webkit-background-size: 2.13333rem 1.06667rem;
+      top: 0.21333rem;
+      left: 10.66667rem; }
+.goAddress{
+  width: 3rem;
+  height: 1rem;
+  background-color:transparent;
+  position: absolute;
+  z-index: 5;
+  right: .5rem;
+  top: 1rem;
+  background-image:url('../images/address_add_btn.png');
+  -webkit-background-size: 3rem 1rem;
+    }
+
+section{
+  padding-top: 4rem;
+  width: 100%;
+}
+section .pressBox{
+  position: relative;
+  width: 100%;
+  height:4rem;
+  background-color: gray;
+}
+section .pressBox #pText{
+  font-size: .8rem;
+  display: inline-block;
+  padding-left: .5rem;
+  width: 100%;
+  height:2rem;
+  border: 1px solid transparent;
+  line-height: 2rem;
+  color: white;
+}
+section .pressBox #pText2{
+  display: inline-block;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: .6rem;
+  color: white;
+  padding-left: .5rem;
+}
+section .pressBox #pText2 #spanPhoto{
+  margin-left: 1rem;
+}
+section .pressBox .jianT{
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+  font-size: 1rem;
+  color: orange;
+}
+a{
+  text-decoration: none;
+}
+/*# sourceMappingURL=receivingAddress.css.map */

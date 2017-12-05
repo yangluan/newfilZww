@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的娃娃</title>
+    <script src="../js/yang_set_rem.js"></script>
+    <link rel="stylesheet" href="../css/myDoll.css">
+    <script src="../js/jquery.js"></script>
+</head>
+<body style="background-color:#AFD3F7;">
+
+<header>
+    <div class="imgBox"><a href="user.html"></a>我的娃娃</div>
+</header>
+
+
+<section>
+    <div class="text">奖品寄存时间为抓取成功之后的15天，如果15天未申请发货，系统将自动为你兑换为娃娃币。</div>
+
+    <div class="content">
+        <ul id="soBigDataBox">
+            <li>
+                <div><img src="" alt="" id="pic1" style="width: 3.9rem"></div>
+                <div><span><span id="name1">酷红兔小帅</span> <br>（<span id="number1">3</span>个）</span>
+                </div>
+                <div>
+                    <input type="checkbox"  id="ipt1" onclick="inputCheck()">
+                </div>
+            </li>
+            <li>
+                <div><img src="" alt="" id="pic2" style="width: 3.9rem"></div>
+                <div><span><span id="name2">酷红兔小帅</span> <br>（<span id="number2">0</span>个）</span>
+                    </div>
+                <div>
+                    <input type="checkbox" id="ipt2" onclick="inputCheck()">
+                </div>
+            </li>
+            <li>
+                <div><img src="" alt="" id="pic3" style="width: 3.9rem"></div>
+                <div><span><span id="name3">酷红兔小帅</span> <br>（<span id="number3">0</span>个）</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="ipt3" onclick="inputCheck()">
+                </div>
+            </li>
+            <li>
+                <div><img src="" alt="" id="pic4" style="width: 3.9rem"></div>
+                <div><span><span id="name4">酷红兔小帅</span> <br>（<span id="number4">0</span>个）</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="ipt4" onclick="inputCheck()">
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+
+<footer>
+    <div class="left" id="left" onclick="duiHuan()">兑换<span id="numb"></span>娃娃币</div>
+    <a href="ConfirmOrder.html" style="text-decoration: none" id="shenQinFaHuo"><div class="right" id="right">申请发货</div></a>
+</footer>
+
+<script>
+    var ipt1 = document.getElementById('ipt1'),ipt2 = document.getElementById('ipt2');
+    var ipt3 = document.getElementById('ipt3'),ipt4 = document.getElementById('ipt4');
+    var btn1 = document.getElementById('left'),btn2 = document.getElementById('right');
+    var numb = document.getElementById('numb');
+    var soBigDataBox = document.getElementById('soBigDataBox');
+
+    var name1,name2,name3,name4;
+    var price1,price2,price3,price4;
+    var exchange1,exchange2,exchange3,exchange4;
+    var number1,number2,number3,number4;
+    var picurl1,picurl2,picurl3,picurl4;
+    //get myDoll list
+
+    var firstDataObj,secondChecks,threeChecks,foursChecks;    //fourCheckeds
+    var firstChecks,secondDataObj,threeDataObj,fourDataObj;   //fourObjects
+              //inputGroups
+    $.ajax({
+        url: 'http://zhuawawa-debug.hljoy.com/api/1.0.3/account/GetAwards/?token=10004:1512099830:0af71dc955a2b146fbd93ab6d84900b1',
+        datatype: 'json',
+        method: 'get',
+        data:{},
+        success: function (data) {
+            for (var i in data.data){
+                if(i == 0){
+                    firstDataObj =data.data[i=0];
+                    document.getElementById('name1').innerHTML = firstDataObj.p.Name;
+                    document.getElementById('number1').innerHTML = firstDataObj.c;
+                    document.getElementById('pic1').src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+firstDataObj.p.PicUrl;
+                    exchange1 = data.data[0].p.Exchange;
+                }
+                if(i == 1){
+                    secondDataObj = data.data[i=1];
+                    document.getElementById('name2').innerHTML = secondDataObj.p.Name;
+                    document.getElementById('number2').innerHTML = secondDataObj.c;
+                    document.getElementById('pic2').src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+secondDataObj.p.PicUrl;
+                    exchange2 = data.data[1].p.Exchange;
+                }
+                if(i == 2){
+                    threeDataObj = data.data[i=2];
+                    document.getElementById('name3').innerHTML = threeDataObj.p.Name;
+                    document.getElementById('number3').innerHTML = threeDataObj.c;
+                    document.getElementById('pic3').src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+threeDataObj.p.PicUrl;
+                    exchange3 = data.data[2].p.Exchange;
+                }
+                if(i == 3){
+                    fourDataObj = data.data[i=3];
+                    document.getElementById('name4').innerHTML = fourDataObj.p.Name;
+                    document.getElementById('number4').innerHTML = fourDataObj.c;
+                    document.getElementById('pic4').src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+fourDataObj.p.PicUrl;
+                    exchange4 = data.data[3].p.Exchange;
+                }
+            }
+        }
+    });
+    var inputs = document.querySelectorAll('input[type=checkbox]');//input array
+    function inputCheck() {
+        for(var i =0;i<inputs.length;i++){
+            if(inputs[i].checked ==true){
+                console.log(inputs[i]);
+                var npmYangNumbers = inputs[i].parentNode.previousSibling.previousSibling.firstChild.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.innerText ;
+                localStorage.imgSrc = inputs[i].parentNode.previousSibling.previousSibling.previousSibling.previousSibling.firstChild.src;
+                localStorage.dollName = inputs[i].parentNode.previousSibling.previousSibling.firstChild.firstChild.innerText;
+                localStorage.numbers = npmYangNumbers;
+                numb.innerHTML = npmYangNumbers *50;
+                footGreenBtn();
+                return;
+            }else if(inputs[i].checked ==false){
+                footGrayBtn();
+                numb.innerHTML = '';
+                localStorage.imgSrc = '';
+                localStorage.dollName = '';
+                localStorage.numbers = ''
+            }
+        }
+        function footGreenBtn() {
+            btn1.style.backgroundColor = 'green';
+            btn2.style.backgroundColor = 'green';
+            return
+        }
+        function footGrayBtn() {
+            btn1.style.backgroundColor = 'gray';
+            btn2.style.backgroundColor = 'gray';
+        }
+    }
+
+//        for(var i in inputs){
+////            inputs[i==0].checked == true ? footGreenBtn():footGrayBtn()
+//            if(i == 0){
+//                firstChecks = inputs[i].checked;
+//                firstChecks ? footGreenBtn() : footGrayBtn();
+//            }
+////            if(i == 1){
+////                secondChecks = inputs[i].checked;
+////                secondChecks?footGreenBtn():footGrayBtn();
+////            }
+////            if(i == 2){
+////                threeChecks = inputs[i=2].checked;
+////                threeChecks ? footGreenBtn() : footGrayBtn();
+////            }
+////            if(i == 3){
+////                foursChecks = inputs[i=0].checked;
+////                foursChecks ? footGreenBtn() : footGrayBtn();
+////            }
+//        }
+
+
+    //            for(var i in data.data){
+    //                // first
+    //                name1 = data.data[0].p.Name;           //first name
+    //                $('#name1').html(name1);
+    //                pic1.src='http://zhuawawa-cdn.hljoy.com/1.0.3/'+data.data[0].p.PicUrl;
+    //                exchange1 = data.data[0].p.Exchange;
+    ////                numb.innerHTML = number1 * exchange1   //hear
+    //                price1 = data.data[0].p.Price;
+    //                number1 = data.data[0].c;
+    //                $('#number1').html(number1);
+    //                // second
+    //                name2 = data.data[1].p.Name;
+    //                $('#name2').html(name2);
+    //                number2 = data.data[1].c;
+    //                $('#number2').text(number2);
+    //                price2 = data.data[1].p.Price;
+    //                exchange2 = data.data[1].p.Exchange;
+    //                picUrl2 = data.data[1].p.PicUrl;
+    //                pic2.src='http://zhuawawa-cdn.hljoy.com/1.0.3/'+data.data[1].p.PicUrl;
+    //                // three
+    //                name3 = data.data[2].p.Name;
+    //                $('#name3').html(name3);
+    //                number3 = data.data[2].c;
+    //                $('#number3').text(number3);
+    //                price3 = data.data[2].p.Price;
+    //                exchange3 = data.data[2].p.Exchange;
+    //                pic3.src='http://zhuawawa-cdn.hljoy.com/1.0.3/'+data.data[2].p.PicUrl;
+    //                // four
+    //                price4 = data.data[3].p.Price;
+    //                number4 = data.data[3].c;
+    //                $('#number4').text(number4);
+    //                exchange4 = data.data[3].p.Exchange;
+    //                pic4.src='http://zhuawawa-cdn.hljoy.com/1.0.3/'+data.data[3].p.PicUrl;
+    //                name4 = data.data[3].p.Name;
+    //                $('#name4').html(name4);
+    //                picurl1 = data.data[0].p.PicUrl;
+    //                picurl2 = data.data[1].p.PicUrl;
+    //                picurl3 = data.data[2].p.PicUrl;
+    //                picurl4 = data.data[3].p.PicUrl;
+    //            }
+
+
+
+//    function clickGo() {
+//        if(ipt1.checked == true&&ipt2.checked == false&&ipt3.checked == false&&ipt4.checked ==false){
+//            numb.innerHTML = number1 * exchange1    //1
+//            localStorage.picur1 = picurl1
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//
+//        }else if(ipt1.checked == false&&ipt2.checked == true&&ipt3.checked == false&&ipt4.checked == false){
+//            numb.innerHTML = number2 * exchange2    //2
+//            localStorage.picur2 = picurl2
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//
+//        }else if(ipt1.checked == false&&ipt2.checked == false&&ipt3.checked == true&&ipt4.checked == false){
+//            numb.innerHTML = number3 * exchange3    //3
+//            localStorage.picur3 = picurl3
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//        }else if(ipt1.checked == false&&ipt2.checked == false&&ipt3.checked == false&&ipt4.checked == true){
+//            numb.innerHTML = number4 * exchange4    //4
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//        }else if(ipt1.checked == true&&ipt2.checked == true&&ipt3.checked == false&&ipt4.checked == false){
+//            var one = number1*exchange1;             // 12
+//            var two2 = number2*exchange2;
+//            localStorage.picur1 = picurl1;
+//            localStorage.picur2 = picurl2;
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            numb.innerHTML = one + two2;
+//        }else if(ipt1.checked == true&&ipt2.checked == false&&ipt3.checked == true&&ipt4.checked == false){
+//            var one = number1*exchange1;            //13
+//            var three2 = number3*exchange3;
+//            localStorage.picur1 = picurl1
+//            localStorage.picur3 = picurl3
+//            numb.innerHTML = one + three2;
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//        }else if(ipt1.checked == true&&ipt2.checked == false&&ipt3.checked == false&&ipt4.checked == true){
+//            var one = number1*exchange1;            // 14
+//            var four2 = number4*exchange4;
+//            localStorage.picur1 = picurl1
+//            localStorage.picur4 = picurl4
+//            numb.innerHTML = one + four2;
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//        }else if(ipt1.checked == false&&ipt2.checked == true&&ipt3.checked == true&&ipt4.checked == false){
+//            var one = number2*exchange2;            //23
+//            var one1 = number3*exchange3;
+//            localStorage.picur2 = picurl2
+//            localStorage.picur3 = picurl3
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//            numb.innerHTML = one + one1;
+//        }else if(ipt1.checked == false&&ipt2.checked == true&&ipt3.checked == false&&ipt4.checked == true){
+//            var one = number2*exchange2;            //24
+//            var four2 = number4*exchange4;
+//            localStorage.picur2 = picurl2
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//            numb.innerHTML = one + four2;
+//        }else if(ipt1.checked == false&&ipt2.checked == false&&ipt3.checked == true&&ipt4.checked == true){
+//            var one = number3*exchange3;            //34
+//            var four2 = number4*exchange4;
+//            localStorage.picur3 = picurl3
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//            numb.innerHTML = one + four2;
+//        }else if(ipt1.checked == true&&ipt2.checked == true&&ipt3.checked == true&&ipt4.checked == false){
+//            var one = number1*exchange1;            //123
+//            var one2 = number2*exchange2;
+//            var four2 = number3*exchange3;
+//            localStorage.picur1 = picurl1
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.picur2 = picurl2
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            localStorage.picur3 = picurl3
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//            numb.innerHTML = one + four2 + one2;
+//        }else if(ipt1.checked == true&&ipt2.checked == true&&ipt3.checked == false&&ipt4.checked == true){
+//            var one = number1*exchange1;            //124
+//            var one2 = number2*exchange2;
+//            var four2 = number4*exchange4;
+//            localStorage.picur1 = picurl1
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.picur2 = picurl2
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//            numb.innerHTML = one + four2 +one2;
+//        }else if(ipt1.checked == true&&ipt2.checked == true&&ipt3.checked == true&&ipt4.checked == true){
+//            var one = number1*exchange1;            //1234
+//            var one2= number2*exchange2;
+//            var one3 = number3*exchange3;
+//            var four2 = number4*exchange4;
+//            localStorage.picur1 = picurl1
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.picur2 = picurl2
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            localStorage.picur3 = picurl3
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//            numb.innerHTML = one + four2 + one2 + one3;
+//        }else if(ipt1.checked == false&&ipt2.checked == true&&ipt3.checked == true&&ipt4.checked == true){
+//            var one = number2*exchange2;            //234
+//            var one2 = number3*exchange3;
+//            var four2 = number4*exchange4;
+//            localStorage.picur2 = picurl2
+//            localStorage.dollname2 = name2
+//            localStorage.num2 = number2
+//            localStorage.picur3 = picurl3
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//            numb.innerHTML = one + four2 + one2;
+//        }else if(ipt1.checked == true&&ipt2.checked == false&&ipt3.checked == true&&ipt4.checked == true){
+//            var one = number1*exchange1;
+//            var one3 = number3*exchange3;
+//            var four2 = number4*exchange4;
+//            localStorage.picur1 = picurl1
+//            localStorage.picur3 = picurl3
+//            localStorage.picur4 = picurl4
+//            localStorage.dollname = name1
+//            localStorage.num = number1
+//            localStorage.dollname3 = name3
+//            localStorage.num3 = number3
+//            localStorage.dollname4 = name4
+//            localStorage.num4 = number4
+//            numb.innerHTML = one + four2 + one3;
+//        }else if(ipt1.checked == false&&ipt2.checked == false&&ipt3.checked == false&&ipt4.checked == false){
+//            localStorage.picur1 = ''
+//            localStorage.picur2 = ''
+//            localStorage.picur3 = ''
+//            localStorage.picur4 = ''
+//            localStorage.dollname = ''
+//            localStorage.dollname2 = ''
+//            localStorage.dollname3 = ''
+//            localStorage.dollname4 = ''
+//            localStorage.num = ''
+//            localStorage.num2 = ''
+//            localStorage.num3= ''
+//            localStorage.num4 = ''
+//        }
+//
+//
+//
+//        console.log('ipt1的选中状态为'+ipt1.checked);
+//        console.log('ipt2的选中状态为'+ipt2.checked);
+//        if (ipt1.checked == true||ipt2.checked == true||ipt3.checked == true||ipt4.checked ==true){
+//            btn1.style.backgroundColor = 'green';
+//            btn2.style.backgroundColor = 'green';
+//        }else if(ipt1.checked == false&&ipt2.checked == false&&ipt3.checked == false&&ipt4.checked == false){
+//            btn1.style.backgroundColor = 'gray';
+//            btn2.style.backgroundColor = 'gray';
+//            numb.innerHTML = ''
+//        }
+//    }
+
+    // 兑换
+    function duiHuan(){
+        for(var i in inputs){
+            if(inputs[i].checked == true){
+                inputs[i].parentNode.parentNode.parentNode.removeChild(inputs[i].parentNode.parentNode)
+                i--;
+            }
+        }
+        numb.innerHTML = '';
+        alert('兑换成功')
+    }
+
+</script>
+
+
+
+</body>
+</html>

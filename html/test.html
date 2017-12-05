@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+
+
+<script>
+    //jsonp    {"__USER":"hy5a20cff65bed9","__TOKEN":"10004:1512099830:0af71dc955a2b146fbd93ab6d84900b1"}
+//    var url='http://zhuawawa-debug.hljoy.com/api/1.0.3/login/ThirdPartyLogin';
+//    jsonp(url);
+//    function jsonp(url) {
+//        var script = document.createElement("script");
+//        script.src = url;
+//        document.body.insertBefore(script, document.body.firstChild);
+//    }
+
+
+//ajax测试接口
+    $.ajax({
+        url: 'http://zhuawawa-debug.hljoy.com/api/1.0.3/login/CheckUpdate/3/1.0.1/0?token=10004:1512099830:0af71dc955a2b146fbd93ab6d84900b1',
+        datatype: 'json',
+        type: 'get',
+        data:{},
+        success: function (data) {
+            console.log(data)
+        }
+    });
+</script>
+
+
+
+</body>
+</html>

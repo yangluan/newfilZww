@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>login</title>
+    <script src="../js/yang_set_rem.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+
+</head>
+<body>
+
+
+<div class="footLogin">
+    <div class="headerLoginLogos"><img src="../images/login_logo.png" alt=""></div>
+    <div class="footerLoginWxs"><img src="../images/login_wx_bg.png" alt="" id="wxLg">
+        <div class="checkText">
+            <input type="checkbox" checked id="check">  登录注册表示同意用户协议与隐私条款
+        </div>
+    </div>
+</div>
+
+<script>
+    //checked
+    var check = document.getElementById('check');
+    check.onclick=function () {
+        if (check.checked==true) check.checked!=true;
+        if (check.checked!=true) check.checked==true;
+        console.log(check.checked)
+    };
+
+    //wxLogin
+    var wx = document.getElementById('wxLg');
+    wx.onclick=function () {
+        if(check.checked==true){
+            //跳转微信登录页
+            console.log('success,the checked is true!')
+        }else{
+            console.log('error,the checked is flase!');
+            alert('请勾选用户协议与隐私条款')
+        }
+    };
+
+    //调微信接口 https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
+    var xhr = new XMLHttpRequest();
+    xhr.setRequestHeader("Content-type","text/plain;charset=UTF-8");
+    xhr.open('post', 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code' );
+    xhr.send('name=fox&age=18');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+        }
+    };
+
+
+
+</script>
+
+
+
+</body>
+</html>

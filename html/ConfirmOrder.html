@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="../js/yang_set_rem.js"></script>
+    <link rel="stylesheet" href="../css/ConfirmOrder.css">
+</head>
+<body style="background-color:#AFD3F7">
+
+<header>
+    <div class="imgBox"><a href="user.html"></a>确认订单</div>
+</header>
+
+<section>
+    <div class="waWaOnlyShow">
+        <div class="onlyPhoto"><img src="" alt="" id="picname1" style="width: 3rem;height: 3rem;"></div>
+        <div class="onlyName" id="onlyName">唐装旺财狗-红</div>
+        <div class="onlyNumb">X <span id="numbe">3</span></div>
+    </div>
+
+    <div class="inpGroups">
+        <div class="iptFirstGroupsTitle"><span>收货地址</span><a href="addRess.html">添加收货地址</a></div>
+        <div class="iptirstGroupsInputs">请先手动添加收货地址</div>
+    </div>
+    <!--  show and hide  -->
+    <div class="bigBox" id="hide" style="background-color:#fff;">
+        <div class="pressBox">
+            <p id="pText"></p>
+            <p id="pText2"><span id="spanPress"></span><span id="spanPhoto"></span></p>
+            <!--<div class="jianT">></div>-->
+        </div>
+    </div>
+
+    <!--  运费 -->
+    <div class="yunFei">
+        <div class="yunFeiTitle">运费</div>
+        <div class="yunFeiText" id="yunFeiText">请先添加收货地址</div>
+    </div>
+    <!--  备注 -->
+    <div class="yunFei">
+        <div class="yunFeiTitle">备注</div>
+        <div class="yunFeiText"><input type="text" placeholder="填写备注"></div>
+    </div>
+
+
+    <!-- 确认 -->
+    <div class="submit" id="btn">
+        确认
+    </div>
+</section>
+
+
+<script>
+
+
+    var picname1 = document.getElementById('picname1');
+    var onlyName = document.getElementById('onlyName');
+    var numbe = document.getElementById('numbe');
+
+
+    var pText = document.getElementById('pText');
+    var spanPress = document.getElementById('spanPress');
+    var spanPhoto = document.getElementById('spanPhoto');
+    var hide = document.getElementById('hide');
+    var yunFeiText = document.getElementById('yunFeiText');
+    if(localStorage.userName == ''&&localStorage.userPrice == ''&&localStorage.userPhoto ==''){
+        hide.style.display = 'none'
+    }else{
+        pText.innerHTML = localStorage.userName;
+        spanPress.innerHTML = localStorage.userPrice;
+        spanPhoto.innerHTML = localStorage.userPhoto;
+        hide.style.display = 'block'
+        if(localStorage.numbers>1){
+            yunFeiText.innerText = '包邮'
+        }else{
+            yunFeiText.innerText = '不包邮'
+        }
+
+    }
+
+
+    if(localStorage.dollName != ''){
+        onlyName.innerHTML = localStorage.dollName;
+        picname1.src = localStorage.imgSrc;
+        numbe.innerHTML = localStorage.numbers;
+    }
+
+    var btn = document.getElementById('btn');
+    btn.onclick =function () {
+        alert('发送成功')
+    }
+
+
+
+//    if(localStorage.picur1 != ''){
+//        picname1.src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+localStorage.picur1;
+//        onlyName.innerHTML = localStorage.dollname
+//        numbe.innerHTML = localStorage.num
+//    }else if(localStorage.picur2 != ''){
+//        picname1.src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+localStorage.picur2;
+//        onlyName.innerHTML = localStorage.dollname2
+//        numbe.innerHTML = localStorage.num2
+//    }else if(localStorage.picur3 != ''){
+//        picname1.src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+localStorage.picur3;
+//        onlyName.innerHTML = localStorage.dollname3
+//        numbe.innerHTML = localStorage.num3
+//    }else if(localStorage.picur4 != ''){
+//        picname1.src = 'http://zhuawawa-cdn.hljoy.com/1.0.3/'+localStorage.picur4;
+//        onlyName.innerHTML = localStorage.dollname4
+//        numbe.innerHTML = localStorage.num
+//    }
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

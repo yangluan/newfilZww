@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>抓娃娃机主界面</title>
+    <script src="../js/yang_set_rem.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/swiper-3.4.2.min.css">
+    <script src="../js/swiper-3.4.2.min.js"></script>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+
+
+
+<div class="loginT" style="width: 100%;position: fixed;z-index: 5;display: none" id="loginTu">
+    <img src="../images/splash_bg.png" alt="" style="width: 100%">
+</div>
+<header>
+    <div class="imgBox"></div>
+    <div class="logBox"></div>
+
+</header>
+
+<section>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../images/banner/timg.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="../images/banner/timg2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="../images/banner/timg3.jpg" alt=""></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <!--<div class="swiper-pagination"></div>-->
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <!-- 如果需要滚动条 -->
+        <!--<div class="swiper-scrollbar"></div>-->
+    </div>
+
+<!--  zoomname -->
+    <span class="roomName">
+        <div class="statesColor1" id="statesColor1"></div>
+        <div class="textTitle1" id="textTitle1"></div>
+    </span>
+    <span class="roomName2">
+        <div class="statesColor2" id="statesColor2"></div>
+        <div class="textTitle2" id="textTitle2"></div>
+    </span>
+
+
+
+    <div class="userPalyRoom">
+        <div>
+            <div>
+                <a href="zoom.html" id="a1"><img src="" alt="" id="imgs1" style="width: 6rem;height: 6rem;"></a>
+            </div>
+            <p id="dollname1">酷红兔小帅</p>
+            <p><span><img src="../images/coin.png" alt=""></span><span id="price1">  10币/次</span></p>
+        </div>
+        <div>
+            <div><a href="zoom.html" id="a2"><img src="" alt="" id="imgs2" style="width: 6rem;height: 6rem;"></a></div>
+            <p id="dollname2">潘潘达熊猫</p>
+            <p><span><img src="../images/coin.png" alt=""></span><span id="price2"> 10币/次</span></p>
+        </div>
+    </div>
+    <div class="userPalyRoom">
+        <div>
+            <div><a href=""></a></div>
+            <p>酷红兔小帅</p>
+            <p><span><img src="../images/coin.png" alt=""></span><span>  10币/次</span></p>
+        </div>
+        <div>
+            <div><a href=""></a></div>
+            <p>潘潘达熊猫</p>
+            <p><span><img src="../images/coin.png" alt=""></span><span> 10币/次</span></p>
+        </div>
+    </div>
+    <script>
+        //轮播
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical',
+            loop: true,
+            effect : 'fade',
+            // 如果需要分页器
+//            pagination: '.swiper-pagination',
+            // 如果需要前进后退按钮
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            // 如果需要滚动条
+//            scrollbar: '.swiper-scrollbar',
+        });
+        //getDate
+        var dollname1 = document.getElementById('dollname1');
+        var dollname2 = document.getElementById('dollname2');
+        var price1 = document.getElementById('price1');
+        var price2 = document.getElementById('price2');
+        var imgs1 = document.getElementById('imgs1');
+        var imgs2 = document.getElementById('imgs2');
+        $.ajax({
+            url: 'http://zhuawawa-debug.hljoy.com/api/1.0.3/play/GetRoomList/0/Id/Name/Device/Product/?token=10004:1512099830:0af71dc955a2b146fbd93ab6d84900b1',
+            datatype: 'json',
+            type: 'get',
+            data:{},
+            success: function (data) {
+                console.log(data);
+                var roomId,roomName,dollid,dollName,dollprice,PicUrl1,deviceStatus1;
+                var roomId2,roomName2,dollid2,dollName2,dollprice2,PicUrl2,deviceStatus2;
+                for(var i in data.data){
+                    dollName=data.data[0].Product.Name;               //娃娃名字1
+                    roomName=data.data[0].Name;                       //房间名字1
+                    deviceStatus1=data.data[0].Device.deviceStatus;   //房间1状态
+                    deviceStatus2=data.data[1].Device.deviceStatus;   //房间2状态
+                    roomName2=data.data[1].Name;                      //房间名字2
+                    dollprice=data.data[0].Product.Price;             //房间1单价
+                    dollName2=data.data[1].Product.Name;
+                    dollprice2=data.data[1].Product.Price;
+                    PicUrl1=data.data[0].Product.PicUrl;
+                    PicUrl2=data.data[1].Product.PicUrl;
+                }
+                console.log(roomName);//房间1
+                console.log(roomName2);//房间2
+                console.log(deviceStatus1);//房间状态1
+                console.log(deviceStatus2);//房间状态2
+                dollname1.innerText=dollName;
+                price1.innerText=dollprice+'币/次';
+                dollname2.innerText=dollName2;
+                price2.innerText=dollprice2+'币/次';
+                imgs1.src='http://zhuawawa-cdn.hljoy.com/1.0.3/'+PicUrl1;
+                imgs2.src='http://zhuawawa-cdn.hljoy.com/1.0.3/'+PicUrl2;
+
+
+                //判断房间1状态
+                var statesColor1 = document.getElementById('statesColor1'),
+                     titleText1 = document.getElementById('textTitle1'),
+                     statesColor2 = document.getElementById('statesColor2'),
+                    titleText2 = document.getElementById('textTitle2');
+                //zoom1 if
+                if(deviceStatus1 == 'error'){
+                    statesColor1.style.backgroundColor = 'red';
+                    $('#a1').attr('href','');
+                    titleText1.innerHTML = '维修中'
+                }else if (deviceStatus1 == 'ready'){
+                    statesColor1.style.backgroundColor = 'green';
+                    $('#a1').attr('href','zoom.html');
+                    titleText1.innerText = '空闲中'
+                }else if(deviceStatus2 == 'playing'){
+                    statesColor2.style.backgroundColor = 'red';
+                    $('#a2').attr('href','zoom.html');
+                    titleText2.innerText = '维修中'
+                }
+                //zoom2 if
+                //判断房间2状态
+                if(deviceStatus2 == 'error'){
+                    statesColor2.style.backgroundColor = 'red';
+                    $('#a2').attr('href','');
+                    titleText2.innerText = '维修中'
+                }else if(deviceStatus2 == 'ready'){
+                    statesColor2.style.backgroundColor = 'green';
+                    $('#a2').attr('href','zoom.html');
+                    titleText2.innerText = '空闲中'
+                }else if(deviceStatus2 == 'playing'){
+                    statesColor2.style.backgroundColor = 'red';
+                    $('#a2').attr('href','zoom.html');
+                    titleText2.innerText = '维修中'
+                }
+            }
+        });
+        //login页
+        var login= document.querySelector('#loginTu');
+        function show() {
+            login.style.display='block';
+        }
+
+        //判断a变量控制login动画页显示隐藏
+        function local() {
+            if(localStorage.a=1){
+                login.style.display='none'
+            }else{
+                setInterval(show,1300);
+            }
+        }
+        local();
+//        localStorage.clear()   //清除localStorage存储
+//        封装
+//        function javaFn_getDate(url,data,post,success) {
+//            var ajax = new XMLHttpRequest();//创建异步对象
+//            ajax.open(post,url);//推荐全部使用post请求 所以只对post进行了封装 get请求无须调此函数
+//            ajax.setRequestHeader('Content-type','Access-Control-Allow-Origin:*/utf-8');//设置请求头
+//            if(data)ajax.send(data) else{ajax.send()}//如果data有值 send发送 如果没有 直接发送
+//            ajax.onreadystatechange=function () {
+//                if(ajax.readyState==4&&ajax.status==200){//当readyState为4表示请求结束 status为200表示请求成功
+//                    return ajax.responseText;// 返回数据 使数据可以在外部访问到
+//                    success(ajax.responseText); //success() 函数  如果请求成功将数据打印出来
+//                }
+//            }
+//        }
+        //        window.onload(function () {
+        //            //路由
+        //            function Router() {
+        //                this.routes = {};
+        //                this.currentUrl = '';
+        //            }
+        //            Router.prototype.route = function(path, callback) {
+        //                this.routes[path] = callback || function(){};
+        //            };
+        //            Router.prototype.refresh = function() {
+        //                this.currentUrl = location.hash.slice(1) || '/';
+        //                this.routes[this.currentUrl]();
+        //            };
+        //            Router.prototype.init = function() {
+        //                window.addEventListener('load', this.refresh.bind(this), false);
+        //                window.addEventListener('hashchange', this.refresh.bind(this), false);
+        //            };
+        //            window.Router = new Router();
+        //            window.Router.init();
+        //            //ly
+        //            var footer = document.querySelector('.flex');
+        //            var user = document.querySelector('.user');
+        //            var home = document.querySelector('.home');
+        //            // change Page anything
+        //            function changeBgColor(color) {
+        //                footer.style.backgroundColor = color;
+        //            }
+        //            Router.route('/home', function() {
+        ////            changeBgColor('red');
+        //                console.log('this is home!');
+        //            });
+        //            Router.route('/user', function() {
+        ////            changeBgColor('yellow');
+        //                console.log('this is user!');
+        //            });
+        //        });
+    </script>
+
+
+</section>
+
+
+<footer>
+    <div class="flex">
+        <a href="index.html" class="home"></a>
+        <a href="user.html" class="user"></a>
+    </div>
+</footer>
+
+</body>
+</html>

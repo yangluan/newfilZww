@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../css/base.css" />
+<style>
+    .header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+    .nav {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .nav .goback {
+        display: none;
+        width: 11%;
+        margin-top: 6%;
+        margin-left: 2%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .nav .logo {
+        width: 42%;
+        height: auto;
+        margin: auto;
+    }
+    .roomList ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .roomList li {
+        display: inline-block;
+        width: 39%;
+        margin: 5%;
+    }
+    .roomList li a {
+        color: #333;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        position: relative;
+    }
+    .roomList li a span {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin-bottom: 12%;
+        z-index: 1;
+    }
+    .roomList li span {
+        display: block;
+        text-align: center;
+        line-height: 180%;
+    }
+    .roomList .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 88%;
+        margin: 6%;        
+        z-index: 0;
+    }
+    .live {
+        background-color: #aaa;
+        width: 96%;
+        height: 66%;
+        margin: auto;
+        position: relative;
+        z-index: 0;
+    }
+    .live .video {
+        height: 100%;
+    }
+    .live .player {
+        position: absolute;
+    }
+    .live .btn {
+        width: 10%;
+        display: block;
+        position: absolute;
+        right: 0;
+        margin-top: 48%;
+        z-index: 1;
+    }
+    .button {
+        display: block;
+    }
+    .controler {
+        display: none;
+        position: relative;
+        margin-top: -22%;
+        z-index: 1;
+    }
+    .controler .button {
+        position: absolute;
+        width: 19%;
+    }
+    .controler .play_left {
+        margin-top: 14%;
+        margin-left: 10%;
+    }
+    .controler .play_right {
+        margin-top: 14%;
+        margin-left: 46%;
+    }
+    .controler .play_up {
+        margin-left: 28%;
+    }
+    .controler .play_down {
+        margin-left: 28%;
+        margin-top: 30%;
+    }
+    .controler .play_catch {
+        right: 0;
+        margin-right: 7%;
+        margin-top: 14%;
+    }
+    .controler .button .status_focus {
+        display: none;
+    }
+    .start {
+        width: 50%;
+        margin: auto;
+        margin-top: 10%;
+    }
+    .start .status_disabled {
+        display: none;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .play .result {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        margin-top: 20%;
+    }
+    .play .result .dialog {
+        width: 96%;
+        margin: auto;
+    }
+    .play .start, .play .result .lose, .play .result .win {
+        display: none;
+    }    
+    .rooms #page_rooms, .play #page_play, .play .playing .controler, .play .ready .start, 
+    .play .win .mask, .play .lose .mask,
+    .play .win .result, .play .lose .result, .lose .result .lose, .win .result .win  {
+        display: block;
+    }
+    .banner, .live {
+        margin-top: 28%;
+    }
+</style>
+</head>
+<body class="play">
+    <div class="header">
+        <a href="./index.html"><div style="position: absolute;width: 2.5rem;height: 2rem;z-index:1;top: 1rem;left: .5rem;background-image:url('../images/back.png');-webkit-background-size: 2.5rem 2rem;"></div></a>
+        <img src="../images/title_bg.png">
+        <div class="nav">
+            <a class="goback" href="javascript:void(0)"><img src="../images/back.png"></a>
+            <img class="logo" src="../images/logo.png">
+        </div>
+    </div>    
+    <div class="mask"></div>
+
+    <div class="page" id="page_rooms">
+        <img class="banner" src="">
+        <div class="roomList">
+            <ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page ready" id="page_play">
+        <div class="live" id="live">
+            <div class="player">
+                <span>用户名</span>
+                <div>
+
+                </div>
+            </div>
+            <a class="btn" href="javascript:toggleCamera()"><img src="../images/toggle_camera.png"></a>
+        </div>
+        <div class="result">
+            <img class="lose" src="../images/play_lose.png">
+            <img class="win" src="../images/play_win.png">
+            <div class="dialog">
+                <img src="../images/play_result_bg.png">
+            </div>
+        </div>
+        <div class="controler" id="controler">
+            <a class="button play_left" href="javascript:dm.moveLeft()">
+                <img class="status_normal" src="../images/play_left.png">
+                <img class="status_focus" src="../images/play_left_touch.png">
+            </a>
+            <a class="button play_right" href="javascript:dm.moveRight()">
+                <img class="status_normal" src="../images/play_right.png">
+                <img class="status_focus" src="../images/play_right_touch.png">
+            </a>
+            <a class="button play_up" href="javascript:dm.moveFornt()">
+                <img class="status_normal" src="../images/play_up.png">
+                <img class="status_focus" src="../images/play_up_touch.png">
+            </a>
+            <a class="button play_down" href="javascript:dm.moveBack()">
+                <img class="status_normal" src="../images/play_down.png">
+                <img class="status_focus" src="../images/play_down_touch.png">
+            </a>
+            <a class="button play_catch" href="javascript:dm.catch()">
+                <img class="status_normal" src="../images/play_catch.png">
+                <img class="status_focus" src="../images/play_catch_touch.png">
+            </a>
+        </div>
+        <a class="button start" href="javascript:gameStart()">
+            <img class="status_normal" src="../images/play_start.png">
+            <img class="status_disabled" src="../images/play_start_grey.png">
+        </a>
+    </div>
+        
+</body>
+</html>
+<script>
+    var assets = {
+        rooms: {
+            scripts: [
+                'js/hljoy.js'
+            ]
+        },
+        play: {
+            scripts: [
+                'js/AgoraRTCSDK-1.14.0.js',
+                'js/jquery.js',
+                'js/demo.js',
+                'js/paho-mqtt.js',
+                'js/MqttProxy.js',
+                'js/dm.js',
+                'js/crypto-js.js'
+            ]
+        }
+    }
+
+    function goRoom(deviceName) {
+        console.log(deviceName)
+    }
+</script>
+<script src="../js/crypto-js.js"></script>
+<script src="../js/hljoy.js"></script>
+<script src="../js/AgoraRTCSDK-1.14.0.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/demo.js"></script>
+<script src="../js/paho-mqtt.js"></script>
+<script src="../js/MqttProxy.js"></script>
+<script src="../js/dm.js"></script>
+<script>
+    var dm;
+    function Page(id) {
+        var element = document.getElementById(id);
+
+        this.setStatus = function(status) {
+            element.className = 'page ' + status;
+        }
+    }
+
+    function gameStart() {
+        hljoy.playerLogin(
+        'player-h5-10004',
+        {
+            onload: function() {
+                var res = JSON.parse(this.responseText);
+                var facade = {
+                    userId: '10004',
+                    config: {
+                        aliyunIotHost: '.iot-as-mqtt.cn-shanghai.aliyuncs.com'
+                    }
+                };
+                mqttProxy = new MqttProxy(facade, res.data.ProductKey, res.data.DeviceId, res.data.DeviceName, res.data.DeviceSecret, res.data.DeviceName,
+                    function() {
+                        var page = new Page('page_play');
+                        page.setStatus('playing');
+                        dm = new DollMachine('wawaji-beijing-00010001', mqttProxy, hljoy);
+                        dm.start();
+                    },
+                    function() {
+
+                });
+            }
+        }
+    );
+    }
+
+    /*var pages = {};
+    var cdnRoot = 'http://zhuawawa-cdn.hljoy.com/1.0.3/';
+    pages['rooms'] = document.getElementById('page_rooms');
+
+    hljoy.getRoomList({
+        onload: function() {
+            var res = JSON.parse(this.responseText);
+            if (res) {
+                var ul, li, a, img, e;
+                ul = pages['rooms'].getElementsByTagName('ul')[0];
+                for (var i = 0; i < res.data.length; i ++) {
+                    var room = res.data[i];
+                    li = document.createElement('li');
+                    ul.appendChild(li);
+                    a = document.createElement('a');
+                    a.href = '#';
+                    img = document.createElement('img');
+                    img.src = 'imgs/product_frame.png';
+                    e = document.createElement('span');
+                    a.appendChild(img);
+                    a.appendChild(e);
+                    li.appendChild(a);
+                    img = document.createElement('img');
+                    img.src = cdnRoot + room.Product.PicUrl;
+                    img.className = 'cover';
+                    a.appendChild(img);
+                    if (room.Device.curPlayer == 0) {
+                        e.innerHTML = '空闲中';
+                    } else {
+                        e.className = 'busy';
+                        e.innerHTML = '游戏中';
+                    }
+                    e = document.createElement('span');
+                    e.className = 'name';
+                    e.innerHTML = room.Product.Name;
+                    li.appendChild(e);
+                    e = document.createElement('span');
+                    e.className = 'price';
+                    e.innerHTML = room.Product.Price;
+                    li.appendChild(e);
+                }
+            }
+        }
+    });
+*/
+    var mqttProxy = null;
+</script>

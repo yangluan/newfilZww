@@ -1,0 +1,121 @@
+ @function rem($px) {
+ @return $px / 46.875 + rem;
+ }
+ *{
+   margin: 0;
+   padding: 0;
+ }
+ body{
+   display: flex;
+ }
+
+ header{
+   z-index: 2;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   height:rem(160);
+   background-color: deepskyblue;
+
+   .imgBox{
+     width: 100%;
+     height: 100%;
+     background-image: url('../images/title_bg.png');
+     background-size: 100% rem(160);
+   }
+   .logBox{
+     z-index: 2;
+     margin: rem(-160) auto;
+     width: rem(200);
+     height:rem(118);
+     background-image: url('../images/title_logo.png');
+     -webkit-background-size:rem(200) rem(118);
+     background-size:rem(200) rem(118);
+   }
+ }
+
+
+
+
+
+ section{
+   flex-grow: 1;
+   background-color: #AFD3F7;
+   padding-top: rem(160);
+   padding-bottom: rem(150);
+   font-size: 20px;
+   .swiper-container {
+     width: 100%;
+     height: rem(400);
+     img{
+       width: 100%;
+       height:100%;
+     }
+   }
+
+   .userPalyRoom {
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     div{
+       text-align: center;
+       font-size: rem(15);
+       margin:rem(10);
+       width: rem(360);
+       height: rem(360);
+       div{
+         img{
+           width: rem(300);
+           height:rem(300);
+         }
+       }
+       span{
+         display: inline-block;
+         img{
+           width: rem(35);
+           height:rem(35);
+         }
+       }
+       div{
+         width: rem(300);
+         height:rem(300);
+         border: 1px solid transparent;
+         margin:auto;
+         background-image: url('../images/product_frame.png');
+         -webkit-background-size:rem(300) rem(300);
+
+       }
+     }
+   }
+ }
+
+ footer{
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   height:rem(100);
+   background-color: white;
+   border-top: 1px solid beige;
+   text-align: center;
+   .flex{
+     width: 100%;
+     height: 100%;
+     display: flex;
+     justify-content: space-around;
+   }
+   a{
+     display: inline-block;
+     width: rem(40);
+     height:rem(40);
+     //background-color: green;
+     margin-top: rem(30);
+   }
+   .home{
+     background-image: url('../images/ico_home_active.png');
+     -webkit-background-size:rem(40);
+   }
+   .user{
+     background-image: url('../images/ico_me_active.png');
+     -webkit-background-size:rem(40);
+   }
+ }

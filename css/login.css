@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.footLogin {
+  width: 100%;
+  height: 28.45867rem;
+  background-image: url("../images/login_bg.png");
+  -webkit-background-size: 100% 28.45867rem;
+  background-size: 100% 28.45867rem;
+  overflow: hidden;
+  position: relative; }
+  .footLogin .headerLoginLogos {
+    width: 100%;
+    position: absolute;
+    height: 8.53333rem;
+    border: 1px solid transparent; }
+    .footLogin .headerLoginLogos img {
+      width: 90%;
+      height: 7.46667rem;
+      margin-left: 1.06667rem;
+      margin-top: 2.13333rem; }
+  .footLogin .footerLoginWxs {
+    width: 100%;
+    height: 13.86667rem;
+    position: absolute;
+    border: 1px solid transparent;
+    bottom: 0; }
+    .footLogin .footerLoginWxs img {
+      width: 80%;
+      height: 4.26667rem;
+      margin-left: 1.70667rem;
+      margin-top: 3.2rem; }
+    .footLogin .footerLoginWxs .checkText {
+      width: 90%;
+      height: 1.06667rem;
+      margin-top: 4.26667rem;
+      border: 1px solid transparent;
+      margin-left: 1.06667rem;
+      text-align: center;
+      font-size: 0.42667rem;
+      color: white; }
+
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  display: flex;
+  background-color: #AFD3F7;
+  overflow: hidden; }
+
+header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 3.41333rem;
+  background-color: deepskyblue; }
+  header .imgBox {
+    text-align: center;
+    color: white;
+    font-size: 0.96rem;
+    line-height: 2.77333rem;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/title_bg.png");
+    background-size: 100% 3.41333rem; }
+    header .imgBox a {
+      padding-left: 0.21333rem;
+      width: 0.64rem;
+      height: 1.06667rem;
+      display: inline-block;
+      position: absolute;
+      top: 0.85333rem;
+      left: 0.42667rem;
+      background-color: transparent;
+      background-image: url("../images/back.png");
+      -webkit-background-size: 0.85333rem 1.06667rem; }
+
+section {
+  padding-top: 3.41333rem;
+  width: 100%; }
+  section ul > li {
+    list-style: none;
+    width: 100%;
+    height: 1.70667rem;
+    border-bottom: 1px solid deepskyblue;
+    display: flex;
+    justify-content: space-around; }
+    section ul > li div {
+      width: 1.70667rem;
+      height: 1.70667rem;
+      background-color: transparent;
+      text-align: center; }
+    section ul > li .firstPic {
+      width: 1.70667rem;
+      height: 1.70667rem;
+      background-image: url("../images/product_frame.png");
+      -webkit-background-size: 1.70667rem; }
+    section ul > li .secondText {
+      width: 3.2rem;
+      font-size: 0.256rem;
+      color: whitesmoke; }
+    section ul > li .lastText {
+      color: red;
+      line-height: 1.70667rem;
+      font-size: 0.42667rem; }
+
+/*# sourceMappingURL=grabRecord.css.map */

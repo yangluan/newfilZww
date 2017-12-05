@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  display: flex; }
+
+header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 3.41333rem;
+  background-color: deepskyblue; }
+  header .imgBox {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/title_bg.png");
+    background-size: 100% 3.41333rem; }
+  header .logBox {
+    z-index: 2;
+    margin: -3.41333rem auto;
+    width: 4.26667rem;
+    height: 2.51733rem;
+    background-image: url("../images/title_logo.png");
+    -webkit-background-size: 4.26667rem 2.51733rem;
+    background-size: 4.26667rem 2.51733rem; }
+
+section {
+  flex-grow: 1;
+  background-color: #AFD3F7;
+  padding-top: 3.41333rem;
+  padding-bottom: 3.2rem;
+  font-size: 20px; }
+section .roomName{
+  width: 5.9rem;
+  height:1rem;
+  background-color: white;
+  position: absolute;
+  left: 1.1rem;
+  top: 17rem;
+  opacity: .6;
+}
+section .roomName .statesColor1{
+  position: absolute;
+  width: .5rem;
+  height:.5rem;
+  background-color: red;
+  left: 1rem;
+  border-radius: 50%;
+  margin-top: .2rem;
+}
+section .roomName .textTitle1{
+  text-align: center;
+  font-size: .6rem;
+  line-height: 1rem;
+  color: #333;
+}
+section .roomName2{
+  width: 5.9rem;
+  height:1rem;
+  background-color: white;
+  position: absolute;
+  left: 9.2rem;
+  top: 17rem;
+  opacity: .6;
+}
+section .roomName2 .statesColor2{
+  position: absolute;
+  width: .5rem;
+  height:.5rem;
+  background-color: green;
+  left: 1rem;
+  border-radius: 50%;
+  margin-top: .2rem;
+}
+section .roomName2 .textTitle2{
+  text-align: center;
+  font-size: .6rem;
+  line-height: 1rem;
+  color: #333;
+}
+  section .swiper-container {
+    width: 100%;
+    height: 8.53333rem; }
+    section .swiper-container img {
+      width: 100%;
+      height: 100%; }
+  section .userPalyRoom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; }
+    section .userPalyRoom div {
+      text-align: center;
+      font-size: 0.32rem;
+      margin: 0.21333rem;
+      width: 7.68rem;
+      height: 7.68rem; }
+      section .userPalyRoom div div img {
+        width: 6.4rem;
+        height: 6.4rem; }
+      section .userPalyRoom div span {
+        display: inline-block; }
+        section .userPalyRoom div span img {
+          width: 0.74667rem;
+          height: 0.74667rem; }
+      section .userPalyRoom div div {
+        width: 6.4rem;
+        height: 6.4rem;
+        border: 1px solid transparent;
+        margin: auto;
+        background-image: url("../images/product_frame.png");
+        -webkit-background-size: 6.4rem 6.4rem; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2.13333rem;
+  background-color: white;
+  border-top: 1px solid beige;
+  text-align: center; }
+  footer .flex {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around; }
+  footer a {
+    display: inline-block;
+    width: 0.85333rem;
+    height: 0.85333rem;
+    margin-top: 0.64rem; }
+  footer .home {
+    background-image: url("../images/ico_home_active.png");
+    -webkit-background-size: 0.85333rem; }
+  footer .user {
+    background-image: url("../images/ico_me_active.png");
+    -webkit-background-size: 0.85333rem; }
+
+/*# sourceMappingURL=index.css.map */
